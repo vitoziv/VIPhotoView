@@ -10,8 +10,7 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/vitoziv/VIPhotoView'
   s.author   = { 
     'Vito Zhang' => 'vvitozhang@gmail.com'
-  } 
-  s.social_media_url   = "https://twitter.com/NoairZhangwei"
+  }
 
   s.platform = :ios,'6.0'
   s.license  = { :type => 'MIT', :file => 'LICENSE' }
