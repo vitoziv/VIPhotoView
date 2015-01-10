@@ -1,0 +1,447 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5F856E071A5D791C0011786E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F856E061A5D791C0011786E /* main.m */; };
+		5F856E0A1A5D791C0011786E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F856E091A5D791C0011786E /* AppDelegate.m */; };
+		5F856E0D1A5D791C0011786E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F856E0C1A5D791C0011786E /* ViewController.m */; };
+		5F856E101A5D791C0011786E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F856E0E1A5D791C0011786E /* Main.storyboard */; };
+		5F856E121A5D791C0011786E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F856E111A5D791C0011786E /* Images.xcassets */; };
+		5F856E151A5D791C0011786E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F856E131A5D791C0011786E /* LaunchScreen.xib */; };
+		5F856E211A5D791C0011786E /* VIPhotoViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F856E201A5D791C0011786E /* VIPhotoViewDemoTests.m */; };
+		5F856E2D1A5D794C0011786E /* VIPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F856E2C1A5D794C0011786E /* VIPhotoView.m */; };
+		5F856E2F1A5D7E290011786E /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5F856E2E1A5D7E290011786E /* test.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5F856E1B1A5D791C0011786E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F856DF91A5D791C0011786E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F856E001A5D791C0011786E;
+			remoteInfo = VIPhotoViewDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5F856E011A5D791C0011786E /* VIPhotoViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIPhotoViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F856E051A5D791C0011786E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F856E061A5D791C0011786E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5F856E081A5D791C0011786E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5F856E091A5D791C0011786E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5F856E0B1A5D791C0011786E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5F856E0C1A5D791C0011786E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5F856E0F1A5D791C0011786E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5F856E111A5D791C0011786E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5F856E141A5D791C0011786E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		5F856E1A1A5D791C0011786E /* VIPhotoViewDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VIPhotoViewDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F856E1F1A5D791C0011786E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F856E201A5D791C0011786E /* VIPhotoViewDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VIPhotoViewDemoTests.m; sourceTree = "<group>"; };
+		5F856E2B1A5D794C0011786E /* VIPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPhotoView.h; sourceTree = "<group>"; };
+		5F856E2C1A5D794C0011786E /* VIPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPhotoView.m; sourceTree = "<group>"; };
+		5F856E2E1A5D7E290011786E /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5F856DFE1A5D791C0011786E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F856E171A5D791C0011786E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5F856DF81A5D791C0011786E = {
+			isa = PBXGroup;
+			children = (
+				5F856E031A5D791C0011786E /* VIPhotoViewDemo */,
+				5F856E1D1A5D791C0011786E /* VIPhotoViewDemoTests */,
+				5F856E021A5D791C0011786E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5F856E021A5D791C0011786E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F856E011A5D791C0011786E /* VIPhotoViewDemo.app */,
+				5F856E1A1A5D791C0011786E /* VIPhotoViewDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5F856E031A5D791C0011786E /* VIPhotoViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				5F856E2A1A5D79300011786E /* VIPhotoView */,
+				5F856E081A5D791C0011786E /* AppDelegate.h */,
+				5F856E091A5D791C0011786E /* AppDelegate.m */,
+				5F856E0B1A5D791C0011786E /* ViewController.h */,
+				5F856E0C1A5D791C0011786E /* ViewController.m */,
+				5F856E0E1A5D791C0011786E /* Main.storyboard */,
+				5F856E111A5D791C0011786E /* Images.xcassets */,
+				5F856E2E1A5D7E290011786E /* test.jpg */,
+				5F856E131A5D791C0011786E /* LaunchScreen.xib */,
+				5F856E041A5D791C0011786E /* Supporting Files */,
+			);
+			path = VIPhotoViewDemo;
+			sourceTree = "<group>";
+		};
+		5F856E041A5D791C0011786E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5F856E051A5D791C0011786E /* Info.plist */,
+				5F856E061A5D791C0011786E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5F856E1D1A5D791C0011786E /* VIPhotoViewDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				5F856E201A5D791C0011786E /* VIPhotoViewDemoTests.m */,
+				5F856E1E1A5D791C0011786E /* Supporting Files */,
+			);
+			path = VIPhotoViewDemoTests;
+			sourceTree = "<group>";
+		};
+		5F856E1E1A5D791C0011786E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5F856E1F1A5D791C0011786E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5F856E2A1A5D79300011786E /* VIPhotoView */ = {
+			isa = PBXGroup;
+			children = (
+				5F856E2B1A5D794C0011786E /* VIPhotoView.h */,
+				5F856E2C1A5D794C0011786E /* VIPhotoView.m */,
+			);
+			path = VIPhotoView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5F856E001A5D791C0011786E /* VIPhotoViewDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F856E241A5D791C0011786E /* Build configuration list for PBXNativeTarget "VIPhotoViewDemo" */;
+			buildPhases = (
+				5F856DFD1A5D791C0011786E /* Sources */,
+				5F856DFE1A5D791C0011786E /* Frameworks */,
+				5F856DFF1A5D791C0011786E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VIPhotoViewDemo;
+			productName = VIPhotoViewDemo;
+			productReference = 5F856E011A5D791C0011786E /* VIPhotoViewDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5F856E191A5D791C0011786E /* VIPhotoViewDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F856E271A5D791C0011786E /* Build configuration list for PBXNativeTarget "VIPhotoViewDemoTests" */;
+			buildPhases = (
+				5F856E161A5D791C0011786E /* Sources */,
+				5F856E171A5D791C0011786E /* Frameworks */,
+				5F856E181A5D791C0011786E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F856E1C1A5D791C0011786E /* PBXTargetDependency */,
+			);
+			name = VIPhotoViewDemoTests;
+			productName = VIPhotoViewDemoTests;
+			productReference = 5F856E1A1A5D791C0011786E /* VIPhotoViewDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5F856DF91A5D791C0011786E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = vito;
+				TargetAttributes = {
+					5F856E001A5D791C0011786E = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					5F856E191A5D791C0011786E = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 5F856E001A5D791C0011786E;
+					};
+				};
+			};
+			buildConfigurationList = 5F856DFC1A5D791C0011786E /* Build configuration list for PBXProject "VIPhotoViewDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5F856DF81A5D791C0011786E;
+			productRefGroup = 5F856E021A5D791C0011786E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5F856E001A5D791C0011786E /* VIPhotoViewDemo */,
+				5F856E191A5D791C0011786E /* VIPhotoViewDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5F856DFF1A5D791C0011786E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F856E101A5D791C0011786E /* Main.storyboard in Resources */,
+				5F856E151A5D791C0011786E /* LaunchScreen.xib in Resources */,
+				5F856E121A5D791C0011786E /* Images.xcassets in Resources */,
+				5F856E2F1A5D7E290011786E /* test.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F856E181A5D791C0011786E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5F856DFD1A5D791C0011786E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F856E2D1A5D794C0011786E /* VIPhotoView.m in Sources */,
+				5F856E0D1A5D791C0011786E /* ViewController.m in Sources */,
+				5F856E0A1A5D791C0011786E /* AppDelegate.m in Sources */,
+				5F856E071A5D791C0011786E /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F856E161A5D791C0011786E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F856E211A5D791C0011786E /* VIPhotoViewDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5F856E1C1A5D791C0011786E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F856E001A5D791C0011786E /* VIPhotoViewDemo */;
+			targetProxy = 5F856E1B1A5D791C0011786E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5F856E0E1A5D791C0011786E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5F856E0F1A5D791C0011786E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5F856E131A5D791C0011786E /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5F856E141A5D791C0011786E /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5F856E221A5D791C0011786E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5F856E231A5D791C0011786E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5F856E251A5D791C0011786E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = VIPhotoViewDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5F856E261A5D791C0011786E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = VIPhotoViewDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5F856E281A5D791C0011786E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VIPhotoViewDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VIPhotoViewDemo.app/VIPhotoViewDemo";
+			};
+			name = Debug;
+		};
+		5F856E291A5D791C0011786E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VIPhotoViewDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VIPhotoViewDemo.app/VIPhotoViewDemo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5F856DFC1A5D791C0011786E /* Build configuration list for PBXProject "VIPhotoViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F856E221A5D791C0011786E /* Debug */,
+				5F856E231A5D791C0011786E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F856E241A5D791C0011786E /* Build configuration list for PBXNativeTarget "VIPhotoViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F856E251A5D791C0011786E /* Debug */,
+				5F856E261A5D791C0011786E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5F856E271A5D791C0011786E /* Build configuration list for PBXNativeTarget "VIPhotoViewDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F856E281A5D791C0011786E /* Debug */,
+				5F856E291A5D791C0011786E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5F856DF91A5D791C0011786E /* Project object */;
+}
