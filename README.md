@@ -8,7 +8,7 @@ VIPhotoView is a view use to view a photo with simple and basic interactive gest
 
 ## Installation
 
-**Cocoapods**
+**CocoaPods**
 
 `pod 'VIPhotoView', '~> 0.1'`
 
