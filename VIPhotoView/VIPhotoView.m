@@ -54,6 +54,7 @@
 
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIImage *image;
 
 @property (nonatomic) BOOL rotating;
 @property (nonatomic) CGSize minSize;
@@ -69,7 +70,8 @@
     if (self) {
         self.delegate = self;
         self.bouncesZoom = YES;
-        
+        _image = image;
+
         // Add container view
         UIView *containerView = [[UIView alloc] initWithFrame:self.bounds];
         containerView.backgroundColor = [UIColor clearColor];
