@@ -10,6 +10,7 @@
 
 @interface VIPhotoView : UIScrollView
 
+@property (nonatomic, strong, readonly) UITapGestureRecognizer *doubleTapGestureRecognizer;
 @property (nonatomic, strong, readonly) UIImage *image;
 
 - (instancetype)initWithFrame:(CGRect)frame andImage:(UIImage *)image;

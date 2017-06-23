@@ -55,6 +55,7 @@
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) UITapGestureRecognizer *doubleTapGestureRecognizer;
 
 @property (nonatomic) BOOL rotating;
 @property (nonatomic) CGSize minSize;
@@ -151,6 +152,7 @@
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
     tapGestureRecognizer.numberOfTapsRequired = 2;
     [_containerView addGestureRecognizer:tapGestureRecognizer];
+    self.doubleTapGestureRecognizer = tapGestureRecognizer;
 }
 
 #pragma mark - UIScrollViewDelegate
