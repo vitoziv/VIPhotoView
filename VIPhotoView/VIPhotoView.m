@@ -11,6 +11,7 @@
 @interface UIImage (VIUtil)
 
 - (CGSize)sizeThatFits:(CGSize)size;
+- (CGSize)sizeThatFills:(CGSize)size;
 
 @end
 
@@ -33,19 +34,19 @@
     return imageSize;
 }
 
-@end
-
-@interface UIImageView (VIUtil)
-
-- (CGSize)contentSize;
-
-@end
-
-@implementation UIImageView (VIUtil)
-
-- (CGSize)contentSize
-{
-    return [self.image sizeThatFits:self.bounds.size];
+- (CGSize)sizeThatFills:(CGSize)size {
+    CGSize imageSize = CGSizeMake(self.size.width / self.scale,
+                                  self.size.height / self.scale);
+    
+    CGFloat widthRatio = imageSize.width / size.width;
+    CGFloat heightRatio = imageSize.height / size.height;
+    
+    if (widthRatio < heightRatio) {
+        imageSize = CGSizeMake(size.width, imageSize.height / widthRatio);
+    }else{
+        imageSize = CGSizeMake(imageSize.width / heightRatio, size.height);
+    }
+    return imageSize;
 }
 
 @end
@@ -54,67 +55,85 @@
 
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) UITapGestureRecognizer *doubleTapGestureRecognizer;
 
 @property (nonatomic) BOOL rotating;
+@property (nonatomic) BOOL needLayout;
 @property (nonatomic) CGSize minSize;
 
 @end
 
 @implementation VIPhotoView
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        [self setupWithImage:nil contentMode:VIPhotoViewContentModeScaleAspectFit];
+    }
+    return self;
+}
 
-- (instancetype)initWithFrame:(CGRect)frame andImage:(UIImage *)image
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [self initWithFrame:frame image:nil contentMode:VIPhotoViewContentModeScaleAspectFit]) {
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame image:(UIImage *)image
 {
+    if (self = [self initWithFrame:frame image:nil contentMode:VIPhotoViewContentModeScaleAspectFit]) {
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame image:(UIImage *)image contentMode:(VIPhotoViewContentMode)contentMode {
     self = [super initWithFrame:frame];
     if (self) {
-        self.delegate = self;
-        self.bouncesZoom = YES;
-        _image = image;
-
-        // Add container view
-        UIView *containerView = [[UIView alloc] initWithFrame:self.bounds];
-        containerView.backgroundColor = [UIColor clearColor];
-        [self addSubview:containerView];
-        _containerView = containerView;
-        
-        // Add image view
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-        imageView.frame = containerView.bounds;
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [containerView addSubview:imageView];
-        _imageView = imageView;
-        
-        // Fit container view's size to image size
-        CGSize imageSize = imageView.contentSize;
-        self.containerView.frame = CGRectMake(0, 0, imageSize.width, imageSize.height);
-        imageView.bounds = CGRectMake(0, 0, imageSize.width, imageSize.height);
-        imageView.center = CGPointMake(imageSize.width / 2, imageSize.height / 2);
-        
-        self.contentSize = imageSize;
-        self.minSize = imageSize;
-        
-        
-        [self setMaxMinZoomScale];
-        
-        // Center containerView by set insets
-        [self centerContent];
-        
-        // Setup other events
-        [self setupGestureRecognizer];
-        [self setupRotationNotification];
+        [self setupWithImage:image contentMode:contentMode];
     }
     
     return self;
+}
+
+- (void)setupWithImage:(UIImage *)image contentMode:(VIPhotoViewContentMode)contentMode {
+    self.delegate = self;
+    self.bouncesZoom = YES;
+    
+    // Add container view
+    UIView *containerView = [[UIView alloc] initWithFrame:self.bounds];
+    containerView.backgroundColor = [UIColor clearColor];
+    [self addSubview:containerView];
+    self.containerView = containerView;
+    
+    // Add image view
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.frame = containerView.bounds;
+    [containerView addSubview:imageView];
+    self.imageView = imageView;
+    
+    // Setup display mode
+    self.contentMode = contentMode;
+    
+    // Setup other events
+    [self setupGestureRecognizer];
+    [self setupRotationNotification];
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     
-    if (self.rotating) {
+    if (self.rotating || self.needLayout) {
         self.rotating = NO;
+        self.needLayout = NO;
+        
+        // update container size
+        [self setMaxMinZoomScale];
+        [self updateDisplayMode];
+        
+        if (self.minSize.width == 0) {
+            return;
+        }
         
         // update container view frame
         CGSize containerSize = self.containerView.frame.size;
@@ -127,14 +146,33 @@
             self.zoomScale = minZoomScale;
         }
         
-        // Center container view
-        [self centerContent];
+        [self updateContentInset];
     }
 }
 
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Getter Setter
+
+- (UIImage *)image {
+    return _imageView.image;
+}
+
+- (void)setImage:(UIImage *)image {
+    _imageView.image = image;
+    _needLayout = YES;
+    
+    [self setNeedsLayout];
+}
+
+- (void)setContentMode:(VIPhotoViewContentMode)contentMode {
+    _contentMode = contentMode;
+    _needLayout = YES;
+    
+    [self setNeedsLayout];
 }
 
 #pragma mark - Setup
@@ -151,8 +189,121 @@
 {
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
     tapGestureRecognizer.numberOfTapsRequired = 2;
-    [_containerView addGestureRecognizer:tapGestureRecognizer];
+    [self.containerView addGestureRecognizer:tapGestureRecognizer];
     self.doubleTapGestureRecognizer = tapGestureRecognizer;
+}
+
+#pragma mark - Update Content Mode
+
+- (void)updateDisplayMode
+{
+    // If don't have image, do nothing.
+    if (self.bounds.size.width == 0 || self.bounds.size.height == 0 ||
+        self.image.size.width == 0 || self.image.size.height == 0) {
+        return;
+    }
+    
+    CGFloat widthRatio = self.image.size.width / self.bounds.size.width;
+    CGFloat heightRatio = self.image.size.height / self.bounds.size.height;
+    
+    switch (self.contentMode) {
+        case VIPhotoViewContentModeScaleAspectFit:
+            [self updateViewToAspectFit];
+            break;
+        
+        case VIPhotoViewContentModeScaleAspectFill:
+            [self updateViewToAspectFill];
+            break;
+        
+        case VIPhotoViewContentModeScaleAspectFillToTop:
+            if (widthRatio < heightRatio) {
+                [self updateViewToAspectFillToTop];
+            } else {
+                [self updateViewToAspectFill];
+            }
+            break;
+            
+        case VIPhotoViewContentModeScaleAspectFillToLeft:
+            if (heightRatio < widthRatio) {
+                [self updateViewToAspectFillToLeft];
+            } else {
+                [self updateViewToAspectFill];
+            }
+            break;
+            
+        case VIPhotoViewContentModeScaleAspectFillToRight:
+            if (heightRatio < widthRatio) {
+                [self updateViewToAspectFillToRight];
+            } else {
+                [self updateViewToAspectFill];
+            }
+            break;
+            
+        case VIPhotoViewContentModeScaleAspectFillToBottom:
+            if (widthRatio < heightRatio) {
+                [self updateViewToAspectFillToBottom];
+            } else {
+                [self updateViewToAspectFill];
+            }
+            break;
+            
+        case VIPhotoViewContentModeCenter:
+            [self updateViewToCenter];
+            break;
+        
+        default:
+            [self updateViewToAspectFit];
+            break;
+    }
+}
+
+- (void)updateViewToAspectFit {
+    CGSize imageSize = [self.imageView.image sizeThatFits:self.bounds.size];
+    [self resetContainerSize:imageSize];
+}
+
+- (void)updateViewToAspectFill {
+    CGSize imageSize = [self.imageView.image sizeThatFills:self.bounds.size];
+    [self resetContainerSize:imageSize];
+    self.contentOffset = CGPointMake((imageSize.width - self.bounds.size.width) / 2, (imageSize.height - self.bounds.size.height) / 2);
+}
+
+- (void)updateViewToAspectFillToTop {
+    CGSize imageSize = [self.imageView.image sizeThatFills:self.bounds.size];
+    [self resetContainerSize:imageSize];
+    self.contentOffset = CGPointMake(imageSize.width - self.bounds.size.width, 0);
+}
+
+- (void)updateViewToAspectFillToLeft {
+    CGSize imageSize = [self.imageView.image sizeThatFills:self.bounds.size];
+    [self resetContainerSize:imageSize];
+    self.contentOffset = CGPointMake(0, (imageSize.height - self.bounds.size.height) / 2);
+}
+
+- (void)updateViewToAspectFillToRight {
+    CGSize imageSize = [self.imageView.image sizeThatFills:self.bounds.size];
+    [self resetContainerSize:imageSize];
+    self.contentOffset = CGPointMake(imageSize.width - self.bounds.size.width, (imageSize.height - self.bounds.size.height) / 2);
+}
+
+- (void)updateViewToAspectFillToBottom {
+    CGSize imageSize = [self.imageView.image sizeThatFills:self.bounds.size];
+    [self resetContainerSize:imageSize];
+    self.contentOffset = CGPointMake(0, imageSize.height - self.bounds.size.height);
+}
+
+- (void)updateViewToCenter {
+    CGSize imageSize = self.imageView.image.size;
+    [self resetContainerSize:imageSize];
+    self.contentOffset = CGPointMake((imageSize.width - self.bounds.size.width) / 2, (imageSize.height - self.bounds.size.height) / 2);
+}
+
+- (void)resetContainerSize:(CGSize)size {
+    self.containerView.frame = CGRectMake(0, 0, size.width, size.height);
+    self.imageView.bounds = CGRectMake(0, 0, size.width, size.height);
+    self.imageView.center = CGPointMake(size.width / 2, size.height / 2);
+    
+    self.contentSize = size;
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -164,7 +315,7 @@
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView
 {
-    [self centerContent];
+    [self updateContentInset];
 }
 
 #pragma mark - GestureRecognizer
@@ -193,28 +344,34 @@
 - (void)setMaxMinZoomScale
 {
     CGSize imageSize = self.imageView.image.size;
-    CGSize imagePresentationSize = self.imageView.contentSize;
+    CGSize imagePresentationSize = [self.imageView.image sizeThatFits:self.bounds.size];
     CGFloat maxScale = MAX(imageSize.height / imagePresentationSize.height, imageSize.width / imagePresentationSize.width);
     self.maximumZoomScale = MAX(1, maxScale); // Should not less than 1
     self.minimumZoomScale = 1.0;
+    self.minSize = imagePresentationSize;   // Controls minimum size
 }
 
-- (void)centerContent
+- (void)updateContentInset
 {
-    CGRect frame = self.containerView.frame;
-    
-    CGFloat top = 0, left = 0;
-    if (self.contentSize.width < self.bounds.size.width) {
-        left = (self.bounds.size.width - self.contentSize.width) * 0.5f;
+    if (self.contentMode == VIPhotoViewContentModeScaleAspectFit) {
+        CGRect frame = self.containerView.frame;
+        
+        CGFloat top = 0, left = 0;
+        if (self.contentSize.width < self.bounds.size.width) {
+            left = (self.bounds.size.width - self.contentSize.width) * 0.5f;
+        }
+        if (self.contentSize.height < self.bounds.size.height) {
+            top = (self.bounds.size.height - self.contentSize.height) * 0.5f;
+        }
+        
+        top -= frame.origin.y;
+        left -= frame.origin.x;
+        
+        self.contentInset = UIEdgeInsetsMake(top, left, top, left);
+    }else{
+        // container is fill
+        self.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     }
-    if (self.contentSize.height < self.bounds.size.height) {
-        top = (self.bounds.size.height - self.contentSize.height) * 0.5f;
-    }
-    
-    top -= frame.origin.y;
-    left -= frame.origin.x;
-    
-    self.contentInset = UIEdgeInsetsMake(top, left, top, left);
 }
 
 @end

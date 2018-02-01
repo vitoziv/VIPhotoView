@@ -11,6 +11,8 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) IBOutlet  VIPhotoView *photoView;
+
 @end
 
 @implementation ViewController
@@ -19,16 +21,41 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     UIImage *image = [UIImage imageNamed:@"test.jpg"];
-    VIPhotoView *photoView = [[VIPhotoView alloc] initWithFrame:self.view.bounds andImage:image];
-    photoView.autoresizingMask = (1 << 6) -1;
+    self.photoView.layer.borderWidth = 1;
+    self.photoView.layer.borderColor = [UIColor blackColor].CGColor;
+    self.photoView.contentMode = VIPhotoViewContentModeScaleAspectFit;
+    self.photoView.image = image;
+    self.photoView.autoresizingMask = (1 << 6) -1;
     
-    [self.view addSubview:photoView];
+    [self.view addSubview:self.photoView];
 }
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
     NSLog(@"%@", NSStringFromCGRect([[[self.view subviews] lastObject] frame]));
+}
+
+- (IBAction)ScaleAspectFit:(id)sender {
+    self.photoView.contentMode = VIPhotoViewContentModeScaleAspectFit;
+}
+- (IBAction)ScaleAspectFill:(id)sender {
+    self.photoView.contentMode = VIPhotoViewContentModeScaleAspectFill;
+}
+- (IBAction)ScaleAspectFillToLeft:(id)sender {
+    self.photoView.contentMode = VIPhotoViewContentModeScaleAspectFillToLeft;
+}
+- (IBAction)ScaleAspectFillToTop:(id)sender {
+    self.photoView.contentMode = VIPhotoViewContentModeScaleAspectFillToTop;
+}
+- (IBAction)ScaleAspectFillToRight:(id)sender {
+    self.photoView.contentMode = VIPhotoViewContentModeScaleAspectFillToRight;
+}
+- (IBAction)ScaleAspectFillToBottom:(id)sender {
+    self.photoView.contentMode = VIPhotoViewContentModeScaleAspectFillToBottom;
+}
+- (IBAction)Center:(id)sender {
+    self.photoView.contentMode = VIPhotoViewContentModeCenter;
 }
 
 - (void)didReceiveMemoryWarning {
