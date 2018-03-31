@@ -80,7 +80,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame image:(UIImage *)image
 {
-    if (self = [self initWithFrame:frame image:nil contentMode:VIPhotoViewContentModeScaleAspectFit]) {
+    if (self = [self initWithFrame:frame image:image contentMode:VIPhotoViewContentModeScaleAspectFit]) {
     }
     return self;
 }
