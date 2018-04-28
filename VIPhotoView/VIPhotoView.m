@@ -128,8 +128,8 @@
         self.needLayout = NO;
         
         // update container size
-        [self setMaxMinZoomScale];
         [self updateDisplayMode];
+        [self setMaxMinZoomScale];
         
         if (self.minSize.width == 0) {
             return;
@@ -344,7 +344,7 @@
 - (void)setMaxMinZoomScale
 {
     CGSize imageSize = self.imageView.image.size;
-    CGSize imagePresentationSize = [self.imageView.image sizeThatFits:self.bounds.size];
+    CGSize imagePresentationSize = self.contentSize;
     CGFloat maxScale = MAX(imageSize.height / imagePresentationSize.height, imageSize.width / imagePresentationSize.width);
     self.maximumZoomScale = MAX(1, maxScale); // Should not less than 1
     self.minimumZoomScale = 1.0;
